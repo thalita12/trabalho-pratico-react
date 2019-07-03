@@ -75,11 +75,7 @@ const styles = StyleSheet.create({
 	txtValor: {
 		fontSize: 16,
 		fontWeight: 'bold'
-	},
-	txtDetalhes: {
-		fontSize: 16
 	}
-
 });
 
 export default UserItem;

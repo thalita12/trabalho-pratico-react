@@ -13,7 +13,7 @@ export default class App extends React.Component {
       super();
    
       // Creating Global Variable.
-      global.api = 'http://localhost:27017';
+      global.api = 'http://192.168.0.105:4000';
    
     }
   render() {

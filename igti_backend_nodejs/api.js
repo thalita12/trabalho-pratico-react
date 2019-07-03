@@ -55,6 +55,16 @@ app.get('/', function (req, res) {
     res.send('API Server')
 });
 
+app.get('/api/createcollections', function (req, res){
+    res.type('json');
+    db.createUsersColetion();
+    console.log("Criando UserCollection");
+    db.createUsers(USERS);
+    db.createProductsCollection();
+    db.createProducts(PRODUCTS);
+    console.log("Salvando os usuários estáticos no banco de dados");
+});
+
 app.post('/api/auth', function (req, res) {
     const body = req.body;
     const user = USERS.find(user => user.username == body.username);
@@ -151,7 +161,15 @@ app.get('/api/getUserById/:id', function (req, res) {
     });
 });
 
+app.get('/api/getAllProducts', function (req, res) {
+    res.type('json');
+    db.dbGetAllProducts(function (err, value) {
+        if (err) throw err;
+        console.log(value);
+        res.send(value);
+    });
+});
+
 app.listen(4000, function () {
     console.log('Listening on porta 4000');
 });
-

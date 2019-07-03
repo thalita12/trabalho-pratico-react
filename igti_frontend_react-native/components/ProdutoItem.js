@@ -8,39 +8,31 @@ import {
 } from 'react-native';
 import { Constants } from 'expo';
 
-// {
-//     'productName': 'Curso IONIC 4',
-//     'price': 39.99,
-//     'description': 'Curso IONIC 4 do básico ao avançado',
-//     'img_url': 'https://i.udemycdn.com/course/240x135/1325912_2431.jpg'
-// },
-
 const ProdutoItem = props => {
-	const { produto, navigateToEditPage } = props;
-	const productName = produto.productName;
-	const price = produto.price;
-	const description = produto.description;
-	const img_url = produto.img_url;
+	const { product, navigateToEditPage } = props;
+	const productName = product.productName;
+	const price = product.price;
+	const description = product.description;
+	const img_url = product.img_url;
 	return (
 		<View style={styles.item}>
 			<TouchableOpacity onPress={() => {
 				// nesse momento vai navegar executar uma função e passar por parâmentro o user mais essa função será
-				// executada no HomeScreen no codigo onPressItem={pageParams => {
+				// executada no ProdutoScreen no codigo onPressItem={pageParams => {
 				//		console.log(pageParams)
 				//		this.props.navigation.navigate('Edit', pageParams);
 				//	}}
-				navigateToEditPage({ produto });
+				navigateToEditPage({ product });
 			}}>
 				
 				<View style={styles.container}>
 					<Image
 						style={styles.image}
 						resizeMode={"cover"}
-						source={{ uri: img_url }}
-					/>
+						source={{ uri: img_url }}/>
 					<Text style={styles.txtTitulo}>Produto: {productName}</Text>
-					<Text style={styles.txtValor}>Preço:  {price}</Text>
 					<Text style={styles.txtValor}>Descrição:  {description}</Text>
+					<Text style={styles.txtValor}>Preço:  {price}</Text>
 				</View>
 			</TouchableOpacity>
 		</View>
@@ -77,18 +69,14 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	txtTitulo: {
-		fontSize: 13,
+		fontSize: 16,
 		color: 'black',
 		marginBottom: 5
 	},
 	txtValor: {
-		fontSize: 16,
+		fontSize: 13,
 		fontWeight: 'bold'
-	},
-	txtDetalhes: {
-		fontSize: 16
 	}
-
 });
 
 export default ProdutoItem;

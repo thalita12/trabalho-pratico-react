@@ -21,17 +21,17 @@ export default class ProdutoScreen extends React.Component {
 
     httpRequestGetAllProducts() {
         this.setState({loading: true});
-        const url = global.api + '/api/dbGetAllProducts';
+        const url = global.api + '/api/getAllProducts';
         setTimeout(() => {
             axios
                 .get(url)
                 .then(response => {
-                    //console.log(response.data)
+                    console.log(response.data);
                     this.setState({
                         products: response.data,
                         loading: false,
                     });
-                    //console.log(this.state.users)
+                    console.log(this.state.products)
                 }).catch(error => {
                 this.setState({
                     loading: false,
@@ -67,7 +67,7 @@ export default class ProdutoScreen extends React.Component {
                         products={this.state.products}
                         onPressItem={pageParams => {
                             console.log(pageParams)
-                            this.props.navigation.navigate('Edit', pageParams);
+                            this.props.navigation.navigate('EditProduct', pageParams);
                         }}/>
                 </View>
             );

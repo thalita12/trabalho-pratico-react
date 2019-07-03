@@ -26,12 +26,12 @@ HomeStack.navigationOptions = {
     ),
 };
 
-const AboutStack = createStackNavigator({
-    Links: AboutScreen,
+const ProdutoStack = createStackNavigator({
+    Produtos: ProdutoScreen,
 });
 
-AboutStack.navigationOptions = {
-    tabBarLabel: 'Links',
+ProdutoStack.navigationOptions = {
+    tabBarLabel: 'Produtos',
     tabBarIcon: ({focused}) => (
         <TabBarIcon
             focused={focused}
@@ -40,12 +40,12 @@ AboutStack.navigationOptions = {
     ),
 };
 
-const ProdutoStack = createStackNavigator({
-    Produtos: ProdutoScreen,
+const AboutStack = createStackNavigator({
+    Links: AboutScreen,
 });
 
-ProdutoStack.navigationOptions = {
-    tabBarLabel: 'Produtos',
+AboutStack.navigationOptions = {
+    tabBarLabel: 'Links',
     tabBarIcon: ({focused}) => (
         <TabBarIcon
             focused={focused}
@@ -81,8 +81,8 @@ const EditStack = createStackNavigator({
 });*/
 export default createBottomTabNavigator({
         HomeStack,
-        AboutStack,
         ProdutoStack,
+        AboutStack,
         AddEditStack
     }
 );
