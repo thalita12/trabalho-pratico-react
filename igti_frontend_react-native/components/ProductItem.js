@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Constants } from 'expo';
 
-const ProdutoItem = props => {
+const ProductItem = props => {
 	const { product, navigateToEditPage } = props;
 	const productName = product.productName;
 	const price = product.price;
@@ -18,7 +18,7 @@ const ProdutoItem = props => {
 		<View style={styles.item}>
 			<TouchableOpacity onPress={() => {
 				// nesse momento vai navegar executar uma função e passar por parâmentro o user mais essa função será
-				// executada no ProdutoScreen no codigo onPressItem={pageParams => {
+				// executada no ProductScreen no codigo onPressItem={pageParams => {
 				//		console.log(pageParams)
 				//		this.props.navigation.navigate('Edit', pageParams);
 				//	}}
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default ProdutoItem;
+export default ProductItem;

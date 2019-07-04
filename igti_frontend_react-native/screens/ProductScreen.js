@@ -1,10 +1,10 @@
 import React from 'react';
 import {ExpoConfigView} from '@expo/samples';
-import ProdutoList from '../components/ProdutoList';
+import ProductList from '../components/ProductList';
 import axios from 'axios';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
-export default class ProdutoScreen extends React.Component {
+export default class ProductScreen extends React.Component {
 
     static navigationOptions = {
         title: 'Produtos',
@@ -63,7 +63,7 @@ export default class ProdutoScreen extends React.Component {
         } else {
             return (
                 <View>
-                    <ProdutoList
+                    <ProductList
                         products={this.state.products}
                         onPressItem={pageParams => {
                             console.log(pageParams)

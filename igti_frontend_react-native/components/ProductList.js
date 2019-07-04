@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
-import ProdutoItem from './ProdutoItem';
+import ProductItem from './ProductItem';
 
-const ProdutoList = props => {
+const ProductList = props => {
 	// props são varáveis globais de um componente que pode ser passadas de um componente para outro
 	const { products, onPressItem } = props;
 	// neste momento cria a view Flatlist e dentro da mesma foi carragado um novo component
@@ -11,7 +11,7 @@ const ProdutoList = props => {
 			style={styles.container}
 			data={products}
 			renderItem={({ item }) => (
-				<ProdutoItem
+				<ProductItem
                     product={item}
 					navigateToEditPage={onPressItem} />
 			)}
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default ProdutoList;
+export default ProductList;

@@ -26,12 +26,10 @@ export default class HomeScreen extends React.Component {
             axios
                 .get(url)
                 .then(response => {
-                    //console.log(response.data)
                     this.setState({
                         users: response.data,
                         loading: false,
                     });
-                    //console.log(this.state.users)
                 }).catch(error => {
                 this.setState({
                     loading: false,
@@ -66,7 +64,6 @@ export default class HomeScreen extends React.Component {
                     <UserList
                         users={this.state.users}
                         onPressItem={pageParams => {
-                            console.log(pageParams)
                             this.props.navigation.navigate('Edit', pageParams);
                         }}/>
                 </View>

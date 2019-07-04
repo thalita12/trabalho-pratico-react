@@ -86,7 +86,7 @@ app.post('/api/createuser', function (req, res) {
     });
 });
 
-app.post('/api/edituser', function (req, res) {
+app.put('/api/edituser', function (req, res) {
     const user = req.body;
     console.log(user);
     db.editUser(user, function (err, value) {
@@ -103,7 +103,6 @@ app.post('/api/edituser', function (req, res) {
 app.delete('/api/deleteuser/:id', function (req, res) {
     console.log("----->delete");
     const id = req.params.id;
-    console.log(id);
     db.deleteUser(id, function (err, value) {
         if (err) throw err;
         console.log(value);
@@ -122,23 +121,6 @@ app.get('/api/users', function (req, res) {
         console.log(value);
         res.send(value);
     });
-});
-
-app.get('/api/products', function (req, res) {
-    res.type('json');
-    db.dbGetAllProducts(function (err, value) {
-        if (err) throw err;
-        console.log(value);
-        res.send(value);
-    });
-});
-
-app.get('/api/createcollections', function (req, res) {
-    res.type('json');
-    console.log("Criando UserCollection");
-    db.createProductsCollection();
-    db.createProducts(PRODUCTS);
-    console.log("Salvando os produtos estáticos no banco de dados");
 });
 
 app.get('/api/getAllUsers', function (req, res) {
@@ -161,12 +143,72 @@ app.get('/api/getUserById/:id', function (req, res) {
     });
 });
 
+// Produtos
+app.post('/api/createproduct', function (req, res) {
+    const product = req.body;
+    db.createProduct(product, function (err, value) {
+        if (err) throw err;
+        console.log(value);
+        if (value) {
+            res.send({"msg": "sucesso"});
+        } else {
+            res.send({"msg": "erro"});
+        }
+    });
+});
+
+app.get('/api/products', function (req, res) {
+    res.type('json');
+    db.dbGetAllProducts(function (err, value) {
+        if (err) throw err;
+        console.log(value);
+        res.send(value);
+    });
+});
+
+app.get('/api/createcollections', function (req, res) {
+    res.type('json');
+    console.log("Criando UserCollection");
+    db.createProductsCollection();
+    db.createProducts(PRODUCTS);
+    console.log("Salvando os produtos estáticos no banco de dados");
+});
+
 app.get('/api/getAllProducts', function (req, res) {
     res.type('json');
     db.dbGetAllProducts(function (err, value) {
         if (err) throw err;
         console.log(value);
         res.send(value);
+    });
+});
+
+app.put('/api/editproduct', function (req, res) {
+    const product = req.body;
+    console.log(product);
+    db.editProduct(product, function (err, value) {
+        if (err) throw err;
+        console.log(value);
+        if (value) {
+            res.send({"msg": "sucesso"});
+        } else {
+            res.send({"msg": "erro"});
+        }
+    });
+});
+
+app.delete('/api/deleteproduct/:id', function (req, res) {
+    console.log("----->delete");
+    const id = req.params.id;
+    console.log(id);
+    db.deleteProduct(id, function (err, value) {
+        if (err) throw err;
+        console.log(value);
+        if (value) {
+            res.send({"msg": "sucesso"});
+        } else {
+            res.send({"msg": "erro"});
+        }
     });
 });
 

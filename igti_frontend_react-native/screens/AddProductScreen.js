@@ -1,15 +1,15 @@
 import React from 'react';
 import { ExpoConfigView } from '@expo/samples';
-import FormAdd from '../components/FormAdd';
+import FormAddProduct from '../components/FormAddProduct';
 import { ScrollView, StyleSheet } from 'react-native';
-export default class AddEditScreen extends React.Component {
+export default class AddProductScreen extends React.Component {
   static navigationOptions = {
-    title: 'Adicionar Usuário',
+    title: 'Novo Produto',
   };
   render() {
     return (
       <ScrollView style={styles.container}>
-        <FormAdd navigation={this.props.navigation} />
+        <FormAddProduct navigation={this.props.navigation} />
       </ScrollView>
     );
   }

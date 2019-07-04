@@ -40,7 +40,6 @@ exports.createUser = function (user, callback) {
     });
 };
 
-
 exports.deleteUser = function (id, callback) {
     let ObjectID = require('mongodb').ObjectID;
     MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
@@ -156,6 +155,71 @@ exports.createProducts = function (products) {
         dbo.collection("products").insertMany(products, function (err, res) {
             if (err) throw err;
             db.close();
+        });
+    });
+};
+
+// foi criada um função onde passamos por parâmetro nosso Json
+exports.createProduct = function (product) {
+    // conecta no banco de dados
+    MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
+        if (err) throw err;
+        // define qual é banco de dados
+        let dbo = db.db("mydb");
+        // insere um Json com uma lista de produtos
+        // Para inserir somente um produto você deve usar "insertOne"
+        dbo.collection("products").insertOne(product, function (err, res) {
+            if (err) throw err;
+            db.close();
+        });
+    });
+};
+
+exports.deleteProduct = function (id, callback) {
+    let ObjectID = require('mongodb').ObjectID;
+    MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
+        if (err) throw err;
+        let dbo = db.db("mydb");
+        let query = {_id: ObjectID(id)};
+        dbo.collection("products").deleteOne(query, {upsert: true}, function (err, res) {
+            if (err) {
+                callback(err, false);
+            }
+            else {
+                let result = true;
+                db.close();
+                callback(null, result);
+            }
+        });
+    });
+};
+
+exports.editProduct = function (product, callback) {
+    let ObjectID = require('mongodb').ObjectID;
+    MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
+        if (err) throw err;
+        let dbo = db.db("mydb");
+        let query = {_id: ObjectID(product._id)};
+        let newvalues =
+            {
+                $set:
+                    {
+                        "productName": product.productName,
+                        "price": product.price,
+                        "description": product.description,
+                        "phone": product.phone,
+                        "img_url": product.img_url,
+                    },
+            };
+        dbo.collection("products").updateOne(query, newvalues, {upsert: true}, function (err, res) {
+            if (err) {
+                callback(err, false);
+            }
+            else {
+                let result = true;
+                db.close();
+                callback(null, result);
+            }
         });
     });
 };

@@ -22,41 +22,42 @@ export default class FormAdd extends Component {
 	validateEmail = (email) => {
 		const regex = /^[a-z._-]+@[a-z.-]+\.[a-z]{2,4}$/;
 
-		if (email == "") {
+		if (email === '') {
 			return false
 		} else {
 			return regex.test(email);
 		}
-	}
+	};
 
 	validatePhone = (phone) => {
 		const regex = /^\+?[0-9]*$/;
 
-		if (phone == "") {
+		if (phone === '') {
 			return false
 		} else {
 			return regex.test(phone);
 		}
-	}
+	};
+
 	validatePassword = (password) => {
 		const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-		if (password == "") {
+		if (password === '') {
 			return false
 		} else {
 			return regex.test(password);
 		}
-	}
+	};
 
 	formSubmit = () => {
 		const vm = this;
-		if (this.state.name == "") {
+		if (this.state.name === '') {
 			alert('Please enter contact name!')
-		} else if (this.validateEmail(this.state.email) == false) {
+		} else if (this.validateEmail(this.state.email) === false) {
 			alert('Please enter a valid email!')
-		} else if (this.validatePhone(this.state.phone) == false) {
+		} else if (this.validatePhone(this.state.phone) === false) {
 			alert('Please enter a valid phone number!')
-		} else if (this.validatePassword(this.state.password) == false) {
+		} else if (this.validatePassword(this.state.password) === false) {
 			alert('Please enter a valid password')
 		} else {
 			const url = global.api+'/api/createuser';
@@ -69,28 +70,29 @@ export default class FormAdd extends Component {
 					alert(err)
 				})
 		}
-	}
+	};
+
 	render() {
-		console.log("Render")
+		console.log("Render");
 		return (
 			<Content>
 				<Form style={styles.formOuter}>
 					<Item floatingLabel style={styles.formInput}>
-						<Label>Name Add</Label>
+						<Label>Nome</Label>
 						<Input
 							onChangeText={(name) => this.setState({ name })}
 							value={this.state.name}
 						/>
 					</Item>
 					<Item floatingLabel style={styles.formInput}>
-						<Label>Username</Label>
+						<Label>Login</Label>
 						<Input
 							onChangeText={(username) => this.setState({ username })}
 							value={this.state.username}
 						/>
 					</Item>
 					<Item floatingLabel style={styles.formInput}>
-						<Label>Email</Label>
+						<Label>E-mail</Label>
 						<Input
 							onChangeText={(email) => this.setState({ email })}
 							value={this.state.email}
@@ -104,7 +106,7 @@ export default class FormAdd extends Component {
 						/>
 					</Item>
 					<Item floatingLabel style={styles.formInput}>
-						<Label>Password</Label>
+						<Label>Senha</Label>
 						<Input
 							onChangeText={(password) => this.setState({ password })}
 							value={this.state.password}

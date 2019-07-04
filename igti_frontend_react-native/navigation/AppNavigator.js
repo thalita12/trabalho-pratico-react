@@ -2,8 +2,7 @@ import React from 'react';
 import {createAppContainer, createStackNavigator, createSwitchNavigator, HeaderBackButton} from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import EditScreen from '../screens/EditScreen';
-import EditProdutoScreen from '../screens/EditProdutoScreen';
-
+import EditProductScreen from '../screens/EditProductScreen';
 
 const EditStack = createStackNavigator({
     Main: {
@@ -15,15 +14,15 @@ const EditStack = createStackNavigator({
     Edit: {
         screen: EditScreen,
         navigationOptions: ({navigation}) => ({ //don't forget parentheses around the object notation
-            title: 'Edit',
+            title: 'Editar Usuário',
             headerLeft: <HeaderBackButton onPress={() => navigation.navigate('HomeStack')}/>
         })
     },
     EditProduct: {
-        screen: EditProdutoScreen,
+        screen: EditProductScreen,
         navigationOptions: ({navigation}) => ({ //don't forget parentheses around the object notation
-            title: 'Edit',
-            headerLeft: <HeaderBackButton onPress={() => navigation.navigate('ProdutoStack')}/>
+            title: 'Editar Produto',
+            headerLeft: <HeaderBackButton onPress={() => navigation.navigate('ProductStack')}/>
         })
     }
 });
