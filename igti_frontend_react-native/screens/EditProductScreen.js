@@ -25,12 +25,11 @@ export default class EditProductScreen extends React.Component {
         } else if (this.state.description === '') {
             alert('Please enter description!')
         } else {
-            const url = global.api + '/api/editproduct';
-
-            axios.put(url, vm.state)
+            axios.put(`${global.api}/api/editproduct`, vm.state)
                 .then(function (response) {
                     const data = response.data;
                     console.log(data.msg);
+                    this.props.navigation.navigate('Produtos');
                 })
                 .catch(function (err) {
                     alert(err)
@@ -40,13 +39,11 @@ export default class EditProductScreen extends React.Component {
 
     formSubmitDelete = () => {
         const vm = this;
-        const url = global.api + '/api/deleteproduct/' + this.state._id;
-        console.log(url);
-        axios.delete(url, vm.state)
+        axios.delete(`${global.api}/api/deleteproduct/${this.state._id}`, vm.state)
             .then(function (response) {
                 const data = response.data;
                 console.log(data.msg);
-
+                this.props.navigation.navigate('Produtos');
             })
             .catch(function (err) {
                 alert(err)

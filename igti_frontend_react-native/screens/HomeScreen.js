@@ -21,10 +21,9 @@ export default class HomeScreen extends React.Component {
 
     httpRequestGetAllUsers() {
         this.setState({loading: true});
-        const url = global.api + '/api/getAllUsers';
         setTimeout(() => {
             axios
-                .get(url)
+                .get(`${global.api}/api/getAllUsers`)
                 .then(response => {
                     this.setState({
                         users: response.data,

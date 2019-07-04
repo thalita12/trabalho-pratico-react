@@ -56,12 +56,11 @@ export default class EditScreen extends React.Component {
         } else if (this.validatePassword(this.state.password) === false) {
             alert('Please enter a valid password')
         } else {
-            const url = global.api + '/api/edituser';
-
-            axios.put(url, vm.state)
+            axios.put(`${global.api}/api/edituser`, vm.state)
                 .then(function (response) {
                     const data = response.data;
                     console.log(data.msg);
+                    this.props.navigation.navigate('Home');
                 })
                 .catch(function (err) {
                     alert(err)
@@ -71,12 +70,11 @@ export default class EditScreen extends React.Component {
 
     formSubmitDelete = () => {
         const vm = this;
-        const url = global.api + '/api/deleteuser/' + this.state._id;
-        console.log(url);
-        axios.delete(url, vm.state)
+        axios.delete(`${global.api}/api/deleteuser/${this.state._id}`, vm.state)
             .then(function (response) {
                 const data = response.data;
                 console.log(data.msg);
+                this.props.navigation.navigate('Home');
             })
             .catch(function (err) {
                 alert(err)

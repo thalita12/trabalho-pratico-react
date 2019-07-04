@@ -21,10 +21,9 @@ export default class ProductScreen extends React.Component {
 
     httpRequestGetAllProducts() {
         this.setState({loading: true});
-        const url = global.api + '/api/getAllProducts';
         setTimeout(() => {
             axios
-                .get(url)
+                .get(`${global.api}/api/getAllProducts`)
                 .then(response => {
                     console.log(response.data);
                     this.setState({
@@ -45,8 +44,6 @@ export default class ProductScreen extends React.Component {
         this.props.navigation.addListener(
             'didFocus',
             payload => {
-
-                //this.props.navigation.setParams({user: null})
                 console.debug('didFocus -- 2', payload);
                 this.httpRequestGetAllProducts();
             }
