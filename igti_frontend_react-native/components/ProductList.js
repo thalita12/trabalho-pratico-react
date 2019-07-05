@@ -23,7 +23,7 @@ const ProductList = props => {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fff'
-	},
+	}
 });
 
 export default ProductList;

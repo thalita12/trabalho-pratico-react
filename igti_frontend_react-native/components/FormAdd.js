@@ -60,11 +60,11 @@ export default class FormAdd extends Component {
 		} else if (this.validatePassword(this.state.password) === false) {
 			alert('Please enter a valid password')
 		} else {
-			const url = global.api+'/api/createuser';
-			axios.post(url, vm.state)
+			axios.post(`${global.api}/api/createuser`, vm.state)
 				.then(function (response) {
 					const data = response.data;
 					console.log(data.msg);
+                    vm.props.navigation.navigate('Home');
 				})
 				.catch(function (err) {
 					alert(err)

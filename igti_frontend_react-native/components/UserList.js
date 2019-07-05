@@ -22,6 +22,7 @@ const UserList = props => {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fff'
-	},
-})
+	}
+});
+
 export default UserList;

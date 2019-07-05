@@ -29,7 +29,7 @@ export default class EditProductScreen extends React.Component {
                 .then(function (response) {
                     const data = response.data;
                     console.log(data.msg);
-                    this.props.navigation.navigate('Produtos');
+                    vm.props.navigation.navigate('Produtos');
                 })
                 .catch(function (err) {
                     alert(err)
@@ -43,7 +43,7 @@ export default class EditProductScreen extends React.Component {
             .then(function (response) {
                 const data = response.data;
                 console.log(data.msg);
-                this.props.navigation.navigate('Produtos');
+                vm.props.navigation.navigate('Produtos');
             })
             .catch(function (err) {
                 alert(err)

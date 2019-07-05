@@ -12,7 +12,7 @@ export default class FormAddProduct extends Component {
             productName: '',
             description: '',
             price: '',
-            img_url: 'https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png'
+            img_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_3dd3LEeDOkTFeH4KPBrSYNjQyrdf_GCcdSIefzMhch_2Z_1C'
         }
     }
 
@@ -25,11 +25,11 @@ export default class FormAddProduct extends Component {
         } else if (this.state.description === '') {
             alert('Please enter description!')
         } else {
-            const url = global.api + '/api/createproduct';
-            axios.post(url, vm.state)
+            axios.post(`${global.api}/api/createproduct`, vm.state)
                 .then(function (response) {
                     const data = response.data;
                     console.log(data.msg);
+                    vm.props.navigation.navigate('Produtos');
                 })
                 .catch(function (err) {
                     alert(err)

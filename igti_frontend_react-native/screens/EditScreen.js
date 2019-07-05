@@ -60,7 +60,7 @@ export default class EditScreen extends React.Component {
                 .then(function (response) {
                     const data = response.data;
                     console.log(data.msg);
-                    this.props.navigation.navigate('Home');
+                    vm.props.navigation.navigate('Home');
                 })
                 .catch(function (err) {
                     alert(err)
@@ -74,7 +74,7 @@ export default class EditScreen extends React.Component {
             .then(function (response) {
                 const data = response.data;
                 console.log(data.msg);
-                this.props.navigation.navigate('Home');
+                vm.props.navigation.navigate('Home');
             })
             .catch(function (err) {
                 alert(err)
